@@ -40,7 +40,36 @@ public class WriterServiceTest {
         String result = writerService.write(name);
         //then
         Assert.assertEquals("Hello, my friend.", result);
+    }@Test
+    public void testBlankName(){
+        //given
+        String name = "     ";
+        //when
+        String result = writerService.write(name);
+        //then
+        Assert.assertEquals("Hello, my friend.", result);
     }
+
+    @Test
+    public void testManyNames(){
+        //given
+        String name = "Hyzio, Dyzio, Zysio";
+        //when
+        String result = writerService.write(name);
+        //then
+        Assert.assertEquals("Hello, Hyzio, Dyzio and Zysio.", result);
+    }
+ @Test
+    public void testManyCapitalizedNames(){
+        //given
+        String name = "HYZIO, DYZIO, ZYSIO";
+        //when
+        String result = writerService.write(name);
+        //then
+        Assert.assertEquals("HELLO, HYZIO, DYZIO AND ZYSIO!", result);
+    }
+
+
 
     @Test
     public void testCapitalizeName(){
