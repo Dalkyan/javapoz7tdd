@@ -17,7 +17,7 @@ public class WriterService {
             resultString = "Hello, " + name + ".";
         }
         if (StringUtils.contains(name, ", ")) {
-            resultString = resultString.substring(0, resultString.lastIndexOf(",")) + and + resultString.substring(resultString.lastIndexOf(",") + 1);
+            resultString = resultString.substring(0, resultString.lastIndexOf(',')) + and + resultString.substring(resultString.lastIndexOf(',') + 1);
         }
         return resultString;
     }
