@@ -4,10 +4,15 @@ import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
     public int calculate(String text) {
-        if (StringUtils.isBlank(text)){
+        if (StringUtils.isBlank(text)) {
             return 0;
         }
         String[] split = text.split(";");
-        return Integer.valueOf(split[0]) + Integer.valueOf(split[1]);
+        int result = 0;
+//        for (String s : split){}
+        for (int i = 0; i < split.length; i++) {
+            result += Integer.valueOf(StringUtils.deleteWhitespace(split[i]));
+        }
+        return result;
     }
 }

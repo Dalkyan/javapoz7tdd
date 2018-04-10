@@ -31,7 +31,18 @@ public class StringCalculatorTest {
     }@Test
     public void blankValue(){
         Assert.assertEquals(0, calculator.calculate(""));
+    }@Test
+    public void singleValue(){
+        Assert.assertEquals(5, calculator.calculate("5"));
     }
-
+    @Test
+    public void manyValues(){
+        Assert.assertEquals(6,calculator.calculate("1;2;3"));
+        Assert.assertEquals(9,calculator.calculate("4;2;3"));
+    }@Test
+    public void manyValuesWithWhitepsaces(){
+        Assert.assertEquals(6,calculator.calculate("1; 2 ;3"));
+        Assert.assertEquals(9,calculator.calculate("4; 2;  3"));
+    }
 
 }
