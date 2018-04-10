@@ -2,23 +2,53 @@ package com.sda.service;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+
 public class WriterService {
     public String write(String name) {
-//     return (StringUtils.isBlank(name))?"Hello, my friend." :
-//             (name.toUpperCase().equals(name)) ? "HELLO, " + name + "!" : "Hello, " + name + ".";
-        String resultString;
-        String and = " and";
-        if (StringUtils.isBlank(name))
-            resultString = "Hello, my friend.";
-        else if (name.toUpperCase().equals(name)) {
-            resultString = "HELLO, " + name + "!";
-            and = " AND";
-        } else {
-            resultString = "Hello, " + name + ".";
+        return prefix(name) + content(name) + suffix(name);
+    }
+
+    private String prefix(String name) {
+        return isCapitalizedName(name) ? "HELLO, " : "Hello, ";
+    }
+
+    private String content(String name) {
+        if (StringUtils.isBlank(name)) {
+            return "my friend";
         }
-        if (StringUtils.contains(name, ", ")) {
-            resultString = resultString.substring(0, resultString.lastIndexOf(',')) + and + resultString.substring(resultString.lastIndexOf(',') + 1);
+
+        StringBuilder sb = new StringBuilder();
+        String[] names = name.split(",");
+//        for (String s : names) {
+//            StringUtils.trim(s);}
+        for (int i = 0; i < names.length - 1; i++) {
+            sb.append(names[i])
+                    .append(getDelimiter(i, names, name));
         }
-        return resultString;
+//        return StringUtils.isBlank(name) ? "my friend" : name;
+        return sb.append(names[names.length - 1]).toString();
+    }
+
+    private String getDelimiter(int index, String[] names, String name) {
+        return index != names.length - 2 ? ", " :
+                (isCapitalizedName(name) ? " AND " : " and ");
+
+    }
+
+    private String suffix(String name) {
+        return isCapitalizedName(name) ? "!" : ".";
+    }
+
+    private boolean isCapitalizedName(String name) {
+        return StringUtils.isNotBlank(name) && name.toUpperCase().equals(name);
+    }
+
+    public static void main(String[] args) {
+        WriterService writerService = new WriterService();
+        String write = writerService.write("");
+
+
+        System.out.println(write);
     }
 }

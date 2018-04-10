@@ -53,7 +53,7 @@ public class WriterServiceTest {
     @Test
     public void testManyNames(){
         //given
-        String name = "Hyzio, Dyzio, Zysio";
+        String name = "Hyzio,Dyzio,Zysio";
         //when
         String result = writerService.write(name);
         //then
@@ -62,7 +62,7 @@ public class WriterServiceTest {
  @Test
     public void testManyCapitalizedNames(){
         //given
-        String name = "HYZIO, DYZIO, ZYSIO";
+        String name = "HYZIO,DYZIO,ZYSIO";
         //when
         String result = writerService.write(name);
         //then
