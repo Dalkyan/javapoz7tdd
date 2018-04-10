@@ -4,14 +4,13 @@ import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
     public int calculate(String text) {
-        if (StringUtils.isBlank(text)) {
-            return 0;
-        }
-        String[] split = text.split(";");
+        String textWithoutWhitespaces = StringUtils.deleteWhitespace(text);
+        String[] elements = StringUtils.split(textWithoutWhitespaces,";");
+        elements = elements == null ? new String[0] : elements;
         int result = 0;
 //        for (String s : split){}
-        for (int i = 0; i < split.length; i++) {
-            result += Integer.valueOf(StringUtils.deleteWhitespace(split[i]));
+        for (int i = 0; i < elements.length; i++) {
+            result += Integer.valueOf(elements[i]);
         }
         return result;
     }
