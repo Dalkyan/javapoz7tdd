@@ -1,9 +1,4 @@
 Feature:
-  Scenario: I can calculate single number
-    Given I initialize stringCalculator
-    And I pass single number value
-    When I trigger calculate function
-    Then I get 5 as a result
 
   Scenario: I can calculate null number
     Given I initialize stringCalculator
@@ -11,32 +6,15 @@ Feature:
     When I trigger calculate function
     Then I get 0 as a result
 
-  Scenario: I can calculate empty string
+  Scenario Outline: I can calculate multiple numbers
     Given I initialize stringCalculator
-    And I pass empty string
+    And I pass '<value>' value
     When I trigger calculate function
-    Then I get 0 as a result
-
-  Scenario: I can calculate empty string
-    Given I initialize stringCalculator
-    And I pass empty string
-    When I trigger calculate function
-    Then I get 0 as a result
-
-  Scenario: I can calculate two numbers
-    Given I initialize stringCalculator
-    And I pass two numbers
-    When I trigger calculate function
-    Then I get 10 as a result
-
-  Scenario: I can calculate multiple numbers
-    Given I initialize stringCalculator
-    And I pass multiple numbers
-    When I trigger calculate function
-    Then I get 10 as a result
-
-  Scenario: I can calculate multiple numbers with whitespaces
-    Given I initialize stringCalculator
-    And I pass multiple numbers with whitespaces
-    When I trigger calculate function
-    Then I get 10 as a result
+    Then I get <result> as a result
+    Examples:
+      | value        | result |
+      | 3;4;7        | 14     |
+      | 5            | 5      |
+      | 5;5          | 10     |
+      |              | 0      |
+      | 23; 45; 7  ; | 75     |
