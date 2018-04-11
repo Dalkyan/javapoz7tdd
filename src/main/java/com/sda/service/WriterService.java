@@ -17,11 +17,10 @@ public class WriterService {
         if (StringUtils.isBlank(name)) {
             return "my friend";
         }
-
+        name = StringUtils.deleteWhitespace(name);
         StringBuilder sb = new StringBuilder();
         String[] names = name.split(",");
-//        for (String s : names) {
-//            StringUtils.trim(s);}
+
         for (int i = 0; i < names.length - 1; i++) {
             sb.append(names[i])
                     .append(getDelimiter(i, names, name));

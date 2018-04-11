@@ -14,16 +14,16 @@ public class StringCalculatorSteps {
     private StringCalculator calculator;
 
     @Given("^I initialize stringCalculator$")
-    public void i_initialize_stringCalculator() throws Throwable {
+    public void i_initialize_stringCalculator(){
         this.calculator = new StringCalculator();}
 
     @And("^I pass single number value$")
-    public void I_pass_single_number_value() {
+    public void i_pass_single_number_value() {
         this.value = "5";
     }
 
     @When("^I trigger calculate function$")
-    public void I_trigger_calculate_function() {
+    public void i_trigger_calculate_function() {
         this.result = calculator.calculate(value);
     }
 
@@ -51,7 +51,7 @@ public class StringCalculatorSteps {
     }
 
     @Then("^I get 10 as a result$")
-    public void iGetAsAResult(){
+    public void i_get_10_as_a_result(){
         Assert.assertEquals(10, result);
     }
 
